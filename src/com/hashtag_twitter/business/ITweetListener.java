@@ -7,6 +7,6 @@ import com.hashtag_twitter.model.Tweet;
 
 public interface ITweetListener {
 	
-	 List<Tweet> getAllTweets() throws IOException;
+	 List<Tweet> getAllTweets(String filePath) throws IOException;
 	
 }

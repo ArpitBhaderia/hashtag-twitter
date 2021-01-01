@@ -11,17 +11,15 @@ import java.util.stream.Collectors;
 
 import com.hashtag_twitter.business.ITweetListener;
 import com.hashtag_twitter.model.Tweet;
-import com.hashtag_twitter.utils.Constants;
 
 public class TweetListenerImpl implements ITweetListener {
 
 	@Override
-	public List<Tweet> getAllTweets() throws IOException {
+	public List<Tweet> getAllTweets(String filePath) throws IOException {
 		
 		System.out.println("==================getAllTweets method called==================");
 
-		String filePath = System.getProperty("user.dir") + File.separator + 
-				Constants.LIB_PATH + File.separator + Constants.TWEET_FILE_PATH;
+		
 
 		File file = new File(filePath) ;  
 		InputStream inputStream = new FileInputStream(file);

@@ -1,5 +1,6 @@
 package com.hashtag_twitter.main;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -11,15 +12,17 @@ import com.hashtag_twitter.business.impl.HashtagListenerImpl;
 import com.hashtag_twitter.business.impl.TweetListenerImpl;
 import com.hashtag_twitter.model.Hashtag;
 import com.hashtag_twitter.model.Tweet;
+import com.hashtag_twitter.utils.Constants;
 
 public class Application {
 
 	public static void main(String[] args) throws IOException {
-
+		String filePath = System.getProperty("user.dir") + File.separator + 
+				Constants.LIB_PATH + File.separator + Constants.TWEET_FILE_PATH;
 		ITweetListener tweetListener = new TweetListenerImpl();
 		IHashtagListener hashtagListener = new HashtagListenerImpl();
 
-		List<Tweet> listOfTweets = tweetListener.getAllTweets();
+		List<Tweet> listOfTweets = tweetListener.getAllTweets(filePath);
 
 		List<Hashtag> listOfHashtags = hashtagListener.extractAllHashtagsFromSingleTweet(listOfTweets);
 
